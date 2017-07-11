@@ -1,0 +1,29 @@
+{
+  "name": "iheartradio-web-api-node",
+  "version": "1.0.0",
+  "description": "A Node.js wrapper for iHeartRadio's Web API",
+  "main": "./src/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/heretse/iheartradio-web-api-node.git"
+  },
+  "keywords": [
+    "iheartradio",
+    "echonest",
+    "radio",
+    "music",
+    "api",
+    "wrapper",
+    "client",
+    "web api"
+  ],
+  "author": "Winston Hsieh",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/heretse/iheartradio-web-api-node/issues"
+  },
+  "homepage": "https://github.com/heretse/iheartradio-web-api-node#readme"
+}
