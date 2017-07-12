@@ -75,6 +75,10 @@ HttpManager._makeRequest = function (method, payload, uri, callback) {
     opts.method = method;
     opts.headers = payload.headers;
 
+    for (var key in payload.query) {
+        opts.headers[key] = payload.query[key];
+    }
+
     var rawPayload;
     for (var key in payload.data) {
         if (!rawPayload) {
