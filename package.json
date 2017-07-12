@@ -25,5 +25,9 @@
   "bugs": {
     "url": "https://github.com/heretse/iheartradio-web-api-node/issues"
   },
-  "homepage": "https://github.com/heretse/iheartradio-web-api-node#readme"
+  "homepage": "https://github.com/heretse/iheartradio-web-api-node#readme",
+  "dependencies": {
+    "follow-redirects": "^1.2.3",
+    "url": "^0.11.0"
+  }
 }
