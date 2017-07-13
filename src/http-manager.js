@@ -70,14 +70,17 @@ HttpManager._makeRequest = function (method, payload, uri, callback) {
     // var reqTimeout = parseInt(RED.settings.httpRequestTimeout) || 120000;
     var reqTimeout = 120000;
 
+    if (payload.query) {
+        uri += "?1=1";
+        for (var key in payload.query) {
+            uri += "&" + key + "=" + payload.query[key];
+        }
+    }
+
     var opts = urllib.parse(uri);
     opts.port = 443;
     opts.method = method;
     opts.headers = payload.headers;
-
-    for (var key in payload.query) {
-        opts.headers[key] = payload.query[key];
-    }
 
     var rawPayload;
     for (var key in payload.data) {
@@ -88,7 +91,7 @@ HttpManager._makeRequest = function (method, payload, uri, callback) {
         rawPayload += "&" + key + "=" + payload.data[key];
     }
 
-    if (opts.headers['content-length'] == null) {
+    if (rawPayload && opts.headers['content-length'] == null) {
         if (Buffer.isBuffer(rawPayload)) {
             opts.headers['content-length'] = rawPayload.length;
         } else {
@@ -143,7 +146,7 @@ HttpManager._makeRequest = function (method, payload, uri, callback) {
     }
     
     req.end();
-
+    return;
 };
 
 /**

@@ -75,11 +75,14 @@ iHeartRadioWebApi.prototype = {
         }
     },
 
+    /*
+     *  Accounts
+     */
     login: function(userNameOrEmail, password, callback) {
 
         var actualCallback = callback;
-
         var actualOptions = {};
+
         if (this._credentials) {
             for (var key in this._credentials) {
                 actualOptions[key] = this._credentials[key];
@@ -96,6 +99,41 @@ iHeartRadioWebApi.prototype = {
             .build();
 
         var promise = this._performRequest(HttpManager.post, request);
+
+        if (actualCallback) {
+            promise.then(function (data) {
+                actualCallback(null, data);
+            }, function (err) {
+                actualCallback(err);
+            });
+        } else {
+            return promise;
+        }
+    },
+
+    /*
+     *  Custom Radio
+     */
+    getTrackByTrackId: function(trackId, callback) {
+        
+        var actualCallback = callback;
+        var actualOptions = {};
+
+        if (this._credentials) {
+            for (var key in this._credentials) {
+                actualOptions[key] = this._credentials[key];
+            }
+        }
+
+        actualOptions['trackId'] = trackId;
+
+        var request = WebApiRequest.builder()
+            .withPath('/api/v1/catalog/getTrackByTrackId')
+            .withHeaders({"Accept": "application/json"})
+            .withQueryParameters(actualOptions)
+            .build();
+
+        var promise = this._performRequest(HttpManager.get, request);
 
         if (actualCallback) {
             promise.then(function (data) {
