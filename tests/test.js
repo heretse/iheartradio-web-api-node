@@ -68,8 +68,16 @@ myHeartRadioApi.searchStation("z100", {maxRows:5}, (err, result) => {
     }
 });
 
+var searchPromise = myHeartRadioApi.searchAll("gorillaz*", {maxRows:5, queryArtist:true, queryBundle:true, queryStation:true, queryArtist:true});
+
+searchPromise.then(function(result) {
+    console.log(result); // "Stuff worked!"
+}, function(err) {
+    console.log(err); // Error: "It broke"
+});
+
 myHeartRadioApi.searchAll("gorillaz*", {maxRows:5, queryArtist:true, queryBundle:true, queryStation:true, queryArtist:true}, (err, result) => {
     if (!err) {
-        console.log(JSON.stringify(result));
+        console.log(result);
     }
 });
