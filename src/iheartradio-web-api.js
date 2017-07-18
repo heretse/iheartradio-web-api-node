@@ -589,8 +589,317 @@ iHeartRadioWebApi.prototype = {
         } else {
             return promise;
         }
-    }
+    },
 
+    searchTrack: function(keywords, options, callback) {
+        
+        var actualCallback;
+
+        if (typeof options === 'function') {
+            actualCallback = options;
+        } else {
+            actualCallback = callback;
+        }
+
+        var actualOptions = {};
+
+        if (this._credentials) {
+            for (var key in this._credentials) {
+                actualOptions[key] = this._credentials[key];
+            }
+        }
+
+        actualOptions['keywords'] = keywords;
+
+        if (options.maxRows) {
+            actualOptions['maxRows'] = options.maxRows;
+        }
+
+        var request = WebApiRequest.builder()
+            .withPath('/api/v1/catalog/searchTrack')
+            .withHeaders(GET_COMMON_HEADERS)
+            .withQueryParameters(actualOptions)
+            .build();
+
+        var promise = this._performRequest(HttpManager.get, request);
+
+        if (actualCallback) {
+            promise.then(function (data) {
+                actualCallback(null, data);
+            }, function (err) {
+                actualCallback(err);
+            });
+        } else {
+            return promise;
+        }
+    },
+
+    searchArtist: function(keywords, options, callback) {
+
+        var actualCallback;
+
+        if (typeof options === 'function') {
+            actualCallback = options;
+        } else {
+            actualCallback = callback;
+        }
+
+        var actualOptions = {};
+
+        if (this._credentials) {
+            for (var key in this._credentials) {
+                actualOptions[key] = this._credentials[key];
+            }
+        }
+
+        actualOptions['keywords'] = keywords;
+        
+        if (options.genreId) {
+            actualOptions['genreId'] = options.genreId;
+        }
+        if (options.vendorGenreId) {
+            actualOptions['vendorGenreId'] = options.vendorGenreId;
+        }
+        if (options.startIndex) {
+            actualOptions['startIndex'] = options.startIndex;
+        }
+        if (options.maxRows) {
+            actualOptions['maxRows'] = options.maxRows;
+        }
+
+        var request = WebApiRequest.builder()
+            .withPath('/api/v1/catalog/searchArtist')
+            .withHeaders(GET_COMMON_HEADERS)
+            .withQueryParameters(actualOptions)
+            .build();
+
+        var promise = this._performRequest(HttpManager.get, request);
+
+        if (actualCallback) {
+            promise.then(function (data) {
+                actualCallback(null, data);
+            }, function (err) {
+                actualCallback(err);
+            });
+        } else {
+            return promise;
+        }
+    },
+
+    searchAlbum: function(keywords, options, callback) {
+
+        var actualCallback;
+
+        if (typeof options === 'function') {
+            actualCallback = options;
+        } else {
+            actualCallback = callback;
+        }
+
+        var actualOptions = {};
+
+        if (this._credentials) {
+            for (var key in this._credentials) {
+                actualOptions[key] = this._credentials[key];
+            }
+        }
+
+        actualOptions['keywords'] = keywords;
+
+        if (options.genreId) {
+            actualOptions['genreId'] = options.genreId;
+        }
+        if (options.vendorGenreId) {
+            actualOptions['vendorGenreId'] = options.vendorGenreId;
+        }
+        if (options.startIndex) {
+            actualOptions['startIndex'] = options.startIndex;
+        }
+        if (options.maxRows) {
+            actualOptions['maxRows'] = options.maxRows;
+        }
+
+        var request = WebApiRequest.builder()
+            .withPath('/api/v1/catalog/searchAlbum')
+            .withHeaders(GET_COMMON_HEADERS)
+            .withQueryParameters(actualOptions)
+            .build();
+
+        var promise = this._performRequest(HttpManager.get, request);
+
+        if (actualCallback) {
+            promise.then(function (data) {
+                actualCallback(null, data);
+            }, function (err) {
+                actualCallback(err);
+            });
+        } else {
+            return promise;
+        }
+    },
+
+    searchFeaturedStation: function(keywords, options, callback) {
+
+        var actualCallback;
+
+        if (typeof options === 'function') {
+            actualCallback = options;
+        } else {
+            actualCallback = callback;
+        }
+
+        var actualOptions = {};
+
+        if (this._credentials) {
+            for (var key in this._credentials) {
+                actualOptions[key] = this._credentials[key];
+            }
+        }
+
+        actualOptions['keywords'] = keywords;
+
+        if (options.maxRows) {
+            actualOptions['maxRows'] = options.maxRows;
+        }
+
+        var request = WebApiRequest.builder()
+            .withPath('/api/v1/catalog/searchFeaturedStation')
+            .withHeaders(GET_COMMON_HEADERS)
+            .withQueryParameters(actualOptions)
+            .build();
+
+        var promise = this._performRequest(HttpManager.get, request);
+
+        if (actualCallback) {
+            promise.then(function (data) {
+                actualCallback(null, data);
+            }, function (err) {
+                actualCallback(err);
+            });
+        } else {
+            return promise;
+        }
+    },
+
+    searchStation: function(keywords, options, callback) {
+
+        var actualCallback;
+
+        if (typeof options === 'function') {
+            actualCallback = options;
+        } else {
+            actualCallback = callback;
+        }
+
+        var actualOptions = {};
+
+        if (this._credentials) {
+            for (var key in this._credentials) {
+                actualOptions[key] = this._credentials[key];
+            }
+        }
+
+        actualOptions['keywords'] = keywords;
+
+        if (options.maxRows) {
+            actualOptions['maxRows'] = options.maxRows;
+        }
+
+        var request = WebApiRequest.builder()
+            .withPath('/api/v1/catalog/searchStation')
+            .withHeaders(GET_COMMON_HEADERS)
+            .withQueryParameters(actualOptions)
+            .build();
+
+        var promise = this._performRequest(HttpManager.get, request);
+
+        if (actualCallback) {
+            promise.then(function (data) {
+                actualCallback(null, data);
+            }, function (err) {
+                actualCallback(err);
+            });
+        } else {
+            return promise;
+        }
+    },
+
+    searchAll: function(keywords, options, callback) {
+        var actualCallback;
+
+        if (typeof options === 'function') {
+            actualCallback = options;
+        } else {
+            actualCallback = callback;
+        }
+
+        var actualOptions = {};
+
+        if (this._credentials) {
+            for (var key in this._credentials) {
+                actualOptions[key] = this._credentials[key];
+            }
+        }
+
+        actualOptions['keywords'] = keywords;
+
+        if (options.maxRows) {
+            actualOptions['maxRows'] = options.maxRows;
+        }
+        if (options.queryArtist) {
+            actualOptions['queryArtist'] = 'true';
+        } else {
+            actualOptions['queryArtist'] = 'false';
+        }
+        if (options.queryArtist) {
+            actualOptions['queryBundle'] = 'true';
+        } else {
+            actualOptions['queryBundle'] = 'false';
+        }
+        if (options.queryArtist) {
+            actualOptions['queryStation'] = 'true';
+        } else {
+            actualOptions['queryStation'] = 'false';
+        }
+        if (options.queryArtist) {
+            actualOptions['queryArtist'] = 'true';
+        } else {
+            actualOptions['queryArtist'] = 'false';
+        }
+        if (options.queryArtist) {
+            actualOptions['queryFeauredStation'] = 'true';
+        } else {
+            actualOptions['queryFeauredStation'] = 'false';
+        }
+        if (options.queryArtist) {
+            actualOptions['queryTalkShow'] = 'true';
+        } else {
+            actualOptions['queryTalkShow'] = 'false';
+        }
+        if (options.queryArtist) {
+            actualOptions['queryTalkTheme'] = 'true';
+        } else {
+            actualOptions['queryTalkTheme'] = 'false';
+        }
+
+        var request = WebApiRequest.builder()
+            .withPath('/api/v1/catalog/searchAll')
+            .withHeaders(GET_COMMON_HEADERS)
+            .withQueryParameters(actualOptions)
+            .build();
+
+        var promise = this._performRequest(HttpManager.get, request);
+
+        if (actualCallback) {
+            promise.then(function (data) {
+                actualCallback(null, data);
+            }, function (err) {
+                actualCallback(err);
+            });
+        } else {
+            return promise;
+        }
+    }
 };
 
 module.exports = iHeartRadioWebApi;
